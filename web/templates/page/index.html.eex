@@ -1,0 +1,38 @@
+<div id="messages"></div>
+<input id="chat-input" type="text"></input>
+<div id="map"></div>
+<script type="text/javascript" >
+var marker
+    var map
+
+      function initMap() {
+        var uluru = {lat:19.687, lng: -99.2150 };
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: uluru
+        });
+        marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+
+function movePin(key){
+console.log(key)
+	let lng = lat = 0
+	
+	if(key == 6) lng = .0004
+	if(key == 4) lng = -0.0004
+	if(key == 8) lat = .0004
+	if(key == 2) lat = -0.0004
+	
+    let new_lat = marker.position.lat() + lat
+    let new_lng = marker.position.lng() + lng
+	
+	marker.setPosition( new google.maps.LatLng( new_lat, new_lng ) );
+	console.log('done')
+}
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSq8wG8IevxahIHtuf200uECJUaiQWo2w&callback=initMap">
+    </script>
